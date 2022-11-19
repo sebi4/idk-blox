@@ -1,0 +1,69 @@
+if game.PlaceId == 11524110143 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Exp n Coins Farm Destroyer idk this game blox", "Midnight")
+
+    -- Main
+    local ExpTab = Window:NewTab("FarmExp")
+    local ExpSection = ExpTab:NewSection("Farming")
+
+    ExpSection:NewToggle("AutoExp", "Auto Exp For U", function(state)
+        if state then
+            _G.loop = true
+            while _G.loop == true do wait()
+                print("Toggle on")
+    
+                local args = {
+                    [1] = workspace.World.Dummies.Level1.TrainingDummy.Humanoid,
+                    [2] = 11
+                }
+                
+                game:GetService("ReplicatedStorage").Events.WeaponDamageEvent:FireServer(unpack(args))
+            end
+        else
+            _G.loop = false
+            while _G.loop do wait()
+                print("Toggle off")
+    
+                local args = {
+                    [1] = workspace.World.Dummies.Level1.TrainingDummy.Humanoid,
+                    [2] = 11
+                }
+                
+                game:GetService("ReplicatedStorage").Events.WeaponDamageEvent:FireServer(unpack(args))
+            end
+        end
+    end)
+
+    local CoinsTab = Window:NewTab("FarmCoins")
+    local CoinsSection = CoinsTab:NewSection("Farming")  
+
+    CoinsSection:NewToggle("AutoCoins", "Auto Coins For U", function(state)
+        if state then
+            _G.loop = true
+            while _G.loop == true do wait()
+                print("Toggle on")
+    
+                local args = {
+                    [1] = workspace.Treasures.Treasure2.Chest
+                }
+                
+                game:GetService("ReplicatedStorage").Events.TreasureEvent:FireServer(unpack(args))                
+            end
+        else
+            _G.loop = false
+            while _G.loop do wait()
+                print("Toggle off")
+    
+                local args = {
+                    [1] = workspace.Treasures.Treasure2.Chest
+                }
+                
+                game:GetService("ReplicatedStorage").Events.TreasureEvent:FireServer(unpack(args))                
+            end
+        end
+    end)
+
+
+
+
+end
